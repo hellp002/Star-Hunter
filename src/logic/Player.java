@@ -49,8 +49,8 @@ public class Player extends Entity {
 		return instance;
 	}
 
-	public static void newPlayer() {
-		instance = new Player(100, 99, 3, 5, 0.8, 15);
+	public static void newPlayer(int health, int power, double speed, double shootSpeed, double attackSpeed, int armour) {
+		instance = new Player(health, power, speed, shootSpeed, attackSpeed, armour);
 	}
 
 	public Player(int health, int power, double speed, double shootSpeed, double attackSpeed, int armour) {
@@ -136,8 +136,8 @@ public class Player extends Entity {
 			if (now - lastDead >= Data.CORPSE_DELAY) {
 				
 				SceneController.getAnimation().stop();
-				SceneController.loadMainMenu();
-				AudioLoad.playMusic("Main_Menu");
+				SceneController.loadGameOver();
+				
 			}
 			return;
 		}
@@ -340,6 +340,7 @@ public class Player extends Entity {
 		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
 		if (now - coolDownTime[1] >= Data.AROUNDSHOT_CD) {
 			coolDownTime[1] = now;
+			SFXPlayer.getSfxMap().get("shoot").play();
 			Vector2D refVector = new Vector2D(1, 0);
 			final int ROTAING_VECTOR = 30;
 			final int CIRCLE = 360;
@@ -487,6 +488,8 @@ public class Player extends Entity {
 			setArmour(armour - damage);
 
 		} else {
+			long now = System.currentTimeMillis() - SceneController.getTimeAdd();
+			lastDamageTaken[1] = now;
 			setHealth(health - damage, SetHealthType.DAMAGE);
 		}
 	}
@@ -533,9 +536,6 @@ public class Player extends Entity {
 		return new Rectangle(this.x - modelSize / 2, this.y - modelSize / 2, modelSize, modelSize);
 	}
 
-	@Override
-	public double getY() {
-		return y;
-	}
+
 
 }
