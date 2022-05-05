@@ -67,7 +67,6 @@ public class Data {
 	public static final double SHOTSPEED_UP = 0.5;
 	public static final double SKILLTABLE_LOC_X = 200;
 	public static final double SKILLTABLE_LOC_Y = 200;
-	public static final Image mineSprite = new Image(ClassLoader.getSystemResource("Mine.png").toString());
 	public static final Image HEART = new Image(ClassLoader.getSystemResource("pic/heart.png").toString());
 	public static final Image LEVEL = new Image(ClassLoader.getSystemResource("pic/level.png").toString());
 	public static final int[] LEVELTABLE = {5,7,9,11,13,20,40,80,170,200,230,240,400,450,550,750,950,1100,1222,1300,1400,1700,1800,2000,2200,2500,2700,3000,3300,3610,5555,7520,11222,15212};

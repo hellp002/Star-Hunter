@@ -75,6 +75,7 @@ public class SkillTree extends GridPane{
 		doubleShot.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				doubleShotHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();
@@ -84,6 +85,7 @@ public class SkillTree extends GridPane{
 		trippleShot.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				trippleShotHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();
@@ -93,6 +95,7 @@ public class SkillTree extends GridPane{
 		quadraShot.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				quadShotHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();
@@ -103,6 +106,7 @@ public class SkillTree extends GridPane{
 		attackSpeed.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				attackSpeedHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();
@@ -113,6 +117,7 @@ public class SkillTree extends GridPane{
 		armour.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				armourHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();
@@ -123,6 +128,7 @@ public class SkillTree extends GridPane{
 		health.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				healthHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();
@@ -132,6 +138,7 @@ public class SkillTree extends GridPane{
 		power.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				powerHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();
@@ -142,6 +149,7 @@ public class SkillTree extends GridPane{
 		aroundShot.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				aroundShotHandle();
+				result.setText("You use the skill point");
 			} catch (SkillRequirementException e) {
 				result.setText(e.toString());
 				SFXPlayer.getSfxMap().get("Error").play();

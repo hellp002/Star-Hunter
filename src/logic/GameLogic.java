@@ -70,7 +70,7 @@ public class GameLogic {
 		if (enemys.size() <= 0) {
 			wave++;
 			SFXPlayer.getSfxMap().get("spawn").play();
-			if (wave == 10) {
+			if (wave >= 10 && !AudioLoad.getCurrentBGM().equals(AudioLoad.getMediaMap().get("Lastlong"))) {
 				AudioLoad.playMusic("Lastlong");
 			}
 			final int divideFactor = 5;
