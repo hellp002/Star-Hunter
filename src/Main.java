@@ -25,10 +25,7 @@ public class Main extends Application {
 		HashMap<String, Controller> controlMap = SceneController.getControlMap();
 		loadMainMenuFile(sceneMap, controlMap);
 		loadTutorial(rootMap, controlMap);
-		loadMainMenuBGM();
-		loadTutorialBGM();
-		loadGameBGM1();
-		loadGameBGMlastlong();
+		loadBGM();
 		AudioLoad.playMusic("Main_Menu");
 		SceneController.loadMainMenu();
 	
@@ -54,28 +51,19 @@ public class Main extends Application {
 		rootMap.put("Tutorial", loader.load());
 		controlMap.put("Tutorial", loader.getController());
 	}
-
-	private void loadMainMenuBGM() {
+	private void loadBGM() {
 		HashMap<String, MediaPlayer> mediaMap = AudioLoad.getMediaMap();
-		MediaPlayer bgm = new MediaPlayer(new Media(getClass().getResource(Music.MAIN_MENU).toString()));
+		MediaPlayer bgm;
+		bgm = new MediaPlayer(new Media(getClass().getResource(Music.MAIN_MENU).toString()));
 		mediaMap.put("Main_Menu", bgm);
+		bgm = new MediaPlayer(new Media(getClass().getResource(Music.TUTORIAL).toString()));
+		mediaMap.put("Tutorial", bgm);
+		bgm = new MediaPlayer(new Media(getClass().getResource(Music.Dungeon).toString()));
+		mediaMap.put("Dungeon", bgm);
+		bgm = new MediaPlayer(new Media(getClass().getResource(Music.LASTLONG).toString()));
+		mediaMap.put("Lastlong", bgm);
+		bgm = new MediaPlayer(new Media(getClass().getResource(Music.DEATH).toString()));
+		mediaMap.put("Death", bgm);
 	}
 
-	private void loadTutorialBGM() {
-		HashMap<String, MediaPlayer> mediaMap = AudioLoad.getMediaMap();
-		MediaPlayer bgm = new MediaPlayer(new Media(getClass().getResource(Music.TUTORIAL).toString()));
-		mediaMap.put("Tutorial", bgm);
-	}
-	
-	private void loadGameBGM1() {
-		HashMap<String, MediaPlayer> mediaMap = AudioLoad.getMediaMap();
-		MediaPlayer bgm = new MediaPlayer(new Media(getClass().getResource(Music.Dungeon).toString()));
-		mediaMap.put("Dungeon", bgm);
-	}
-	
-	private void loadGameBGMlastlong() {
-		HashMap<String, MediaPlayer> mediaMap = AudioLoad.getMediaMap();
-		MediaPlayer bgm = new MediaPlayer(new Media(getClass().getResource(Music.LASTLONG).toString()));
-		mediaMap.put("Lastlong", bgm);
-	}
 }
