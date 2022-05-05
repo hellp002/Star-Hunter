@@ -98,4 +98,10 @@ public class Tiles implements IRenderable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public double getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
