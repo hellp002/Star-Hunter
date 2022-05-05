@@ -23,7 +23,7 @@ public class SkillTree extends GridPane{
 	private static final Image ARMOUR = new Image(ClassLoader.getSystemResource("pic/Skills/Armour.png").toString());
 	private static final Image HEALTH = new Image(ClassLoader.getSystemResource("pic/Skills/Health.png").toString());
 	private static final Image POWER = new Image(ClassLoader.getSystemResource("pic/Skills/Power.png").toString());
-	private static final Image AROUNDSHOT = new Image(ClassLoader.getSystemResource("pic/Skills/shootSpeed.png").toString());
+	private static final Image AROUNDSHOT = new Image(ClassLoader.getSystemResource("pic/Skills/ShootSpeed.png").toString());
 	private SkillLine doubleShot;
 	private SkillLine trippleShot;
 	private SkillLine quadraShot;
@@ -157,12 +157,13 @@ public class SkillTree extends GridPane{
 		if (player.getAllAbility().contains(Ability.DOUBLE_SHOT)) {
 			throw new SkillRequirementException("You already get this ability");
 		}
-		if (player.getLevel() < 3) {
+		final int REQUIRE_LEVEL = 3;
+		if (player.getLevel() < REQUIRE_LEVEL) {
 			throw new SkillRequirementException("Need level 3 to upgrade this");
 		}
 		
-		
-		player.useSkillPoint(1);
+		final int USED_POINT = 1;
+		player.useSkillPoint(USED_POINT);
 		player.getAllAbility().add(Ability.DOUBLE_SHOT);
 		skillPoint.setText("Point : " + player.getSkillPoint());
 		SFXPlayer.getSfxMap().get("Successful").play();
@@ -173,14 +174,15 @@ public class SkillTree extends GridPane{
 		if (player.getAllAbility().contains(Ability.TRIPPLE_SHOT)) {
 			throw new SkillRequirementException("You already get this ability");
 		}
-		if (player.getLevel() < 6) {
+		final int REQUIRE_LEVEL = 6;
+		if (player.getLevel() < REQUIRE_LEVEL) {
 			throw new SkillRequirementException("Need level 6 to upgrade this");
 		}
 		if (!player.getAllAbility().contains(Ability.DOUBLE_SHOT)) {
 			throw new SkillRequirementException("Need to get Double Shot before get this ability");
 		}
-		
-		player.useSkillPoint(2);
+		final int USED_POINT = 2;
+		player.useSkillPoint(USED_POINT);
 		player.getAllAbility().add(Ability.TRIPPLE_SHOT);
 		skillPoint.setText("Point : " + player.getSkillPoint());
 		SFXPlayer.getSfxMap().get("Successful").play();
@@ -191,12 +193,14 @@ public class SkillTree extends GridPane{
 		if (player.getAllAbility().contains(Ability.QUARDRA_SHOT)) {
 			throw new SkillRequirementException("You already get this ability");
 		}
-		if (player.getLevel() < 9) {
+		final int REQUIRE_LEVEL = 9;
+		if (player.getLevel() < REQUIRE_LEVEL) {
 			throw new SkillRequirementException("Need level 9 to upgrade this");
 		} if (!player.getAllAbility().contains(Ability.TRIPPLE_SHOT)) {
 			throw new SkillRequirementException("Need to get Tripple Shot before get this ability");
 		}
-		player.useSkillPoint(3);
+		final int USED_POINT = 3;
+		player.useSkillPoint(USED_POINT);
 		player.getAllAbility().add(Ability.QUARDRA_SHOT);
 		skillPoint.setText("Point : " + player.getSkillPoint());
 		SFXPlayer.getSfxMap().get("Successful").play();
@@ -207,7 +211,8 @@ public class SkillTree extends GridPane{
 		if (player.getAttackSpeed() <= Data.ATTACKSPEED_UPGRADE_CAP) {
 			throw new SkillRequirementException("Your attack speed exceeds the limit");
 		}
-		player.useSkillPoint(2);
+		final int USED_POINT = 2;
+		player.useSkillPoint(USED_POINT);
 		player.setAttackSpeed(player.getAttackSpeed() - Data.ATTACKSPEED_UP);
 		skillPoint.setText("Point : " + player.getSkillPoint());
 		SFXPlayer.getSfxMap().get("Successful").play();
@@ -216,7 +221,8 @@ public class SkillTree extends GridPane{
 	
 	private void armourHandle() throws SkillRequirementException {
 		Player player = Player.getInstance();
-		player.useSkillPoint(1);
+		final int USED_POINT = 1;
+		player.useSkillPoint(USED_POINT);
 		player.setMaxArmour(player.getMaxArmour() + Data.ARMOUR_UP);
 		player.setArmour(player.getArmour() + Data.ARMOUR_UP);
 		skillPoint.setText("Point : " + player.getSkillPoint());
@@ -225,7 +231,8 @@ public class SkillTree extends GridPane{
 	
 	private void healthHandle() throws SkillRequirementException {
 		Player player = Player.getInstance();
-		player.useSkillPoint(1);
+		final int USED_POINT = 1;
+		player.useSkillPoint(USED_POINT);
 		player.setMaxHealth(player.getMaxHealth() + Data.HEALTH_UP);
 		player.setHealth(player.getHealth() + Data.HEALTH_UP,SetHealthType.HEAL);
 		skillPoint.setText("Point : " + player.getSkillPoint());
@@ -234,7 +241,8 @@ public class SkillTree extends GridPane{
 	
 	private void powerHandle() throws SkillRequirementException {
 		Player player = Player.getInstance();
-		player.useSkillPoint(1);
+		final int USED_POINT = 1;
+		player.useSkillPoint(USED_POINT);
 		player.setPower(player.getPower() + Data.POWER_UP);
 		skillPoint.setText("Point : " + player.getSkillPoint());
 		SFXPlayer.getSfxMap().get("Successful").play();
@@ -245,10 +253,12 @@ public class SkillTree extends GridPane{
 		if (player.getAllAbility().contains(Ability.AROUND_SHOT)) {
 			throw new SkillRequirementException("You already get this ability");
 		}
-		if (player.getLevel() < 5) {
+		final int REQUIRE_LEVEL = 5;
+		if (player.getLevel() < REQUIRE_LEVEL) {
 			throw new SkillRequirementException("Need level 5 to upgrade this");
 		}
-		player.useSkillPoint(3);
+		final int USED_POINT = 3;
+		player.useSkillPoint(USED_POINT);
 		player.getAllAbility().add(Ability.AROUND_SHOT);
 		skillPoint.setText("Point : " + player.getSkillPoint());
 		SFXPlayer.getSfxMap().get("Successful").play();
