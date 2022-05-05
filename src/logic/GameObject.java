@@ -17,5 +17,15 @@ public abstract class GameObject implements Updatable,IRenderable  {
 	public abstract void onCollision(GameObject other);
 	
 	public abstract Rectangle getHitBox();
+	@Override
+	public double getY() {
+		// TODO Auto-generated method stub
+		return y;
+	}
+	
+	@Override
+	public double getX() {
+		return x;
+	}
 
 }
