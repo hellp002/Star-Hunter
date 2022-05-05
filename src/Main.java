@@ -47,12 +47,6 @@ public class Main extends Application {
 		controlMap.put("Main_Menu", loader.getController());
 	}
 
-//	private void loadTutorial() throws IOException {
-//		HashMap<String,Scene> sceneMap = SceneController.getSceneMap();
-//		Parent root = FXMLLoader.load(getClass().getResource("Tutorial.fxml"));
-//		Scene sceneToAdd = new Scene(root);
-//		sceneMap.put("Tutorial", sceneToAdd);
-//	}
 
 	private void loadTutorial(HashMap<String, Parent> rootMap, HashMap<String, Controller> controlMap)
 			throws IOException {
