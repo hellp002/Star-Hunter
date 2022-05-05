@@ -187,9 +187,5 @@ public class NormalMonster extends Enemy {
 		}
 	}
 
-	@Override
-	public double getY() {
-		return y;
-	}
 
 }

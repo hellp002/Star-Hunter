@@ -155,10 +155,6 @@ public class Projectile extends GameObject {
 		return new Rectangle(this.x - BULLET_SIZE/2, this.y - BULLET_SIZE/2,BULLET_SIZE,BULLET_SIZE);
 	}
 
-	@Override
-	public double getY() {
-		// TODO Auto-generated method stub
-		return y;
-	}
+
 
 }

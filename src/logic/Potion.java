@@ -48,10 +48,6 @@ public abstract class Potion extends GameObject {
 		return deleted;
 	}
 
-	@Override
-	public double getY() {
-		return y;
-	}
 
 	@Override
 	public Rectangle getHitBox() {
