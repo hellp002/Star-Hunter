@@ -8,4 +8,5 @@ public interface IRenderable {
 	public boolean isVisible();
 	public boolean isDeleted();
 	public double getY();
+	public double getX();
 }
