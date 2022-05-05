@@ -13,6 +13,8 @@ public abstract class Entity extends GameObject{
 	private int power;
 	protected double shootSpeed,attackSpeed,speed;
 	protected int health,maxHealth,movingCounter,modelSize;
+	
+
 	protected long lastDead;
 	protected int z;
 	protected boolean dead;
@@ -45,6 +47,10 @@ public abstract class Entity extends GameObject{
 			power = 1;
 		}
 		this.power = power;
+	}
+	
+	public double getSpeed() {
+		return speed;
 	}
 	
 	public int getMaxHealth() {
