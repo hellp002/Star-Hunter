@@ -33,14 +33,13 @@ public class GameLogic {
 	public GameLogic() {
 		SceneController.setTimeAdd(0);
 		RenderableHolder.getInstance().getEntities().clear();
-		Player.newPlayer();
 		allEntity = new ArrayList<GameObject>();
 		allBullet = new ArrayList<Projectile>();
 		enemys = new ArrayList<Enemy>();
 		Tiles tiles = new Tiles();
 		running = true;
 		wave = 0;
-		Player you = Player.getInstance();// test
+		Player you = Player.getInstance();
 		addNewObject(tiles);
 		addNewObject(you);
 	}
