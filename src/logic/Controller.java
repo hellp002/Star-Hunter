@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import bgm.AudioLoad;
 import bgm.SFXPlayer;
+import gui.Selection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -16,17 +17,24 @@ public class Controller implements Initializable {
 	private Button startBtn, helpBtn, exitBtn;
 
 	@FXML
-	private StackPane tutorial;
+	private StackPane pane,buttonZone;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 	}
 
-	public void enterTheGame() {
-		SceneController.loadGame();
+	public void selectType() {
+		Selection selectbox = new Selection();
+		pane.getChildren().add(selectbox);
+		buttonZone.setDisable(true);
+		pane.requestFocus();
 		SFXPlayer.getSfxMap().get("btn").play();
-		AudioLoad.playMusic("Dungeon");
+		
+	}
+
+	public StackPane getButtonZone() {
+		return buttonZone;
 	}
 
 	@FXML
@@ -34,7 +42,7 @@ public class Controller implements Initializable {
 		AudioLoad.playMusic("Tutorial");
 		SFXPlayer.getSfxMap().get("btn").play();
 		Parent rootToAdd = SceneController.getRootMap().get("Tutorial");
-		tutorial.getChildren().add(rootToAdd);
+		pane.getChildren().add(rootToAdd);
 		SceneController.getWindow().setTitle("Star Hunter - Tutorial Time");
 
 	}
@@ -48,9 +56,13 @@ public class Controller implements Initializable {
 	public void loadMainMenu() {
 		AudioLoad.playMusic("Main_Menu");
 		SFXPlayer.getSfxMap().get("btn").play();
-		StackPane a = SceneController.getControlMap().get("Main_Menu").tutorial;
+		StackPane a = SceneController.getControlMap().get("Main_Menu").pane;
 		a.getChildren().clear();
 		SceneController.getWindow().setTitle("Star Hunter - Main Menu");
+	}
+
+	public StackPane getPane() {
+		return pane;
 	}
 
 }
