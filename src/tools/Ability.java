@@ -1,0 +1,5 @@
+package tools;
+
+public enum Ability {
+	DOUBLE_SHOT,TRIPPLE_SHOT,QUARDRA_SHOT,SPIRAL_SHOT,AROUND_SHOT,REFLECT;
+}
