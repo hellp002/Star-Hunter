@@ -14,30 +14,40 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 
-	static {
-//		loadResource();
-	}
-
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
 		comparator = (IRenderable o1, IRenderable o2) -> {
-			if (o1.getZ() > o2.getZ())
-				return 1;
-			else if (o1.getZ() == o2.getZ()) {
-				if (o1.getY() > o2.getY()) {
-					return 1;
-				} else if (o1.getY() == o2.getY()) {
-					if (o1 instanceof ChampionMonster && o2 instanceof NormalMonster) {
-						return 1;
-					}
-					return -1;
-				}
-				return -1;
-			}
-
-			return -1;
-
+			return compare(o1,o2);
 		};
+	}
+
+	private int compare(IRenderable o1, IRenderable o2) {
+		if (o1.getZ() > o2.getZ()) {
+			return 1;
+		} else if (o1.getZ() == o2.getZ()) {
+			return compareY(o1, o2);
+		} else {
+			return -1;
+		}
+	}
+
+	private int compareY(IRenderable o1, IRenderable o2) {
+		if (o1.getY() > o2.getY()) {
+			return 1;
+		} else if (o1.getY() == o2.getY()) {
+			return compareByInstance(o1, o2);
+		} else {
+			return -1;
+		}
+	}
+
+
+	private int compareByInstance(IRenderable o1, IRenderable o2) {
+		if (o1 instanceof ChampionMonster && o2 instanceof NormalMonster) {
+			return 1;
+		} else {
+			return -1;
+		}
 	}
 
 	public static RenderableHolder getInstance() {
