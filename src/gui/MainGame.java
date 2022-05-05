@@ -113,11 +113,16 @@ public class MainGame extends Canvas {
 					COORDINATE_BAR[1][0] + barSize[0] + padding + textLength + padding,
 					COORDINATE_BAR[1][1] + barSize[1]);
 		}
-		
+
 		gc.setFill(Color.RED);
+		final int TEXTLENGTH = 75;
 		gc.fillText("Wave : " + GameLogic.getInstance().getWave(), COORDINATE_BAR[1][0] + barSize[0] + padding,
 				COORDINATE_BAR[0][1] + barSize[1]);
-
+		gc.setFill(Color.ORANGE);
+		gc.fillText(
+				"Attack : " + information.getPower() + "\tAttackSpeed : " + String.format("%.1f",information.getAttackSpeed())
+						+ "\tShot Speed : " + information.getShootSpeed() + "\tSpeed : " + information.getSpeed(),
+				COORDINATE_BAR[1][0] + barSize[0] + padding + TEXTLENGTH + padding, COORDINATE_BAR[0][1] + barSize[1]);
 		gc.drawImage(Data.HEART, 12.5, COORDINATE_BAR[0][1], Data.ICONSIZE, Data.ICONSIZE);
 		gc.drawImage(Data.LEVEL, 12.5, COORDINATE_BAR[1][1], Data.ICONSIZE, Data.ICONSIZE);
 
