@@ -2,14 +2,25 @@ package logic;
 
 import java.util.HashMap;
 
+import bgm.AudioLoad;
+import bgm.SFXPlayer;
 import gui.MainGame;
 import gui.SkillTree;
 import gui.TextInBar;
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import sharedObject.RenderableHolder;
@@ -85,6 +96,46 @@ public class SceneController {
 	public static void loadTutorial() {
 		Scene chooseOne = sceneMap.get("Tutorial");
 		changeScene(chooseOne);
+	}
+	
+	public static void loadGameOver() {
+		final int WIDTH = 600;
+		final int HEIGHT = 400;
+		final int padding = 75;
+		VBox root = new VBox(padding);
+		root.setPadding(new Insets(padding));
+		root.setStyle("-fx-background-color: black;");
+		root.setMinWidth(WIDTH);
+		root.setMinHeight(HEIGHT);
+		root.setAlignment(Pos.CENTER);
+		Scene scene = new Scene(root);
+		
+		
+		Text gameover = new Text("Game Over !");
+		gameover.setFont(Data.FONT48);
+		gameover.setFill(Color.RED);
+		
+		Text wave = new Text("You Survive " + GameLogic.getInstance().getWave() + " wave(s)");
+		wave.setFont(Data.FONT36);
+		wave.setFill(Color.WHITE);
+		
+		Button title = new Button("To Main Menu");
+		title.setOnAction((ActionEvent Event) -> {
+			SceneController.loadMainMenu();
+			AudioLoad.playMusic("Main_Menu");
+			SFXPlayer.getSfxMap().get("btn").play();
+		});
+		title.setFont(Data.FONT24);
+		title.setTextFill(Color.ORANGE);
+		window.setTitle("Star Hunter - You Die");
+		
+		root.getChildren().addAll(gameover,wave,title);
+		AudioLoad.playMusic("Death");
+		
+		
+		
+		changeScene(scene);
+		
 	}
 	
 	public static void showSkillTree() {
