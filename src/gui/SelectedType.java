@@ -19,10 +19,11 @@ import tools.Data;
 public class SelectedType extends GridPane {
 	private int health, power, armour;
 	private double speed, shootSpeed, attackSpeed;
-	private Text[] info = new Text[6];
+	private Text[] info = new Text[7];
 	private final static int PADDING = 10;
+	private final static int DES_WIDTH = 120;
 
-	public SelectedType(int health, int power, double speed, double shootSpeed, double attackSpeed, int armour,String text) {
+	public SelectedType(int health, int power, double speed, double shootSpeed, double attackSpeed, int armour,String text,String description) {
 		this.health = health;
 		this.power = power;
 		this.speed = speed;
@@ -36,13 +37,15 @@ public class SelectedType extends GridPane {
 		info[3] = new Text("Shot Speed : " + this.shootSpeed);
 		info[4] = new Text("Attack Speed : " + this.attackSpeed);
 		info[5] = new Text("Armour : " + this.armour);
+		info[6] = new Text(description);
+		info[6].setWrappingWidth(DES_WIDTH);
 		for (int i = 0; i < info.length; i++) {
 			info[i].setFill(Color.ORANGE);
 			info[i].setFont(Data.FONT16);
 			this.add(info[i], 0, i+1);
 		}
+		info[6].setFill(Color.LIME);
 		Text type = new Text("Type : " + text);
-		
 		this.add(type, 0, 0);
 		GridPane.setHalignment(type, HPos.CENTER);
 		this.setPadding(new Insets(PADDING));
