@@ -8,9 +8,9 @@
 
 <AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #804d43;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.Controller">
    <children>
-      <ImageView fitHeight="299.0" fitWidth="551.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="299.0" fitWidth="572.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../tutorial.png" />
+            <Image url="@../res/tutorial.png" />
          </image>
       </ImageView>
       <Button layoutX="186.0" layoutY="313.0" mnemonicParsing="false" onAction="#loadMainMenu" text="Back To MainMenu" textFill="#8e964e">

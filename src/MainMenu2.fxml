@@ -14,7 +14,7 @@
          <children>
             <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../title.jpg" />
+                  <Image url="@../res/title.jpg" />
                </image>
             </ImageView>
             <Text fill="#df4444" layoutX="189.0" layoutY="114.0" stroke="#fa4937" strokeType="OUTSIDE" strokeWidth="0.0" text="Star Hunter">
