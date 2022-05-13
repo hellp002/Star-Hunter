@@ -208,11 +208,7 @@ public class Player extends Entity {
 		return maxXP;
 	}
 
-	@Override
-	public int getZ() {
-		return z;
-	}
-
+	
 	@Override
 	public void draw(GraphicsContext gc) {
 		if (dead) {
@@ -258,10 +254,10 @@ public class Player extends Entity {
 
 	@Override
 	public void onCollision(GameObject other) {
-		if (allAbility.contains(Ability.REFLECT) && (other instanceof Enemy)) {
-			Enemy enemy = (Enemy) other;
-			enemy.setHealth(enemy.getHealth() - enemy.getPower(), SetHealthType.DAMAGE);
-		}
+//		if (allAbility.contains(Ability.REFLECT) && (other instanceof Enemy)) {
+//			Enemy enemy = (Enemy) other;
+//			enemy.setHealth(enemy.getHealth() - enemy.getPower(), SetHealthType.DAMAGE);
+//		}
 
 	}
 
@@ -498,8 +494,9 @@ public class Player extends Entity {
 		if (armour > maxArmour) {
 			armour = maxArmour;
 		}
-		if (armour < 0) {
+		if (armour <= 0) {
 			armour = 0;
+			SFXPlayer.getSfxMap().get("shieldBreak").play();
 		}
 		this.armour = armour;
 
@@ -518,7 +515,11 @@ public class Player extends Entity {
 					health = 0;
 					this.lastDead = now;
 					this.dead = true;
+					this.health = health;
+					SFXPlayer.getSfxMap().get("die").play();
+					return;
 				}
+				SFXPlayer.getSfxMap().get("hurt").play();
 				immune = true;
 				this.health = health;
 			}

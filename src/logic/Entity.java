@@ -89,6 +89,11 @@ public abstract class Entity extends GameObject{
 	public double getShootSpeed() {
 		return shootSpeed;
 	}
+	
+	@Override
+	public int getZ() {
+		return z;
+	}
 
 	
 	public void setShootSpeed(double shootSpeed) {

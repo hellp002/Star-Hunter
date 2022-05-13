@@ -13,11 +13,13 @@ import tools.Data;
 
 public class SkillLine extends VBox{
 	private ImageView skill;
+	private Button submit;
+	
 	public Button getSubmit() {
 		return submit;
 	}
 
-	private Button submit;
+	
 	
 	public SkillLine(Image image,String text) {
 		this.setPadding(new Insets(10));

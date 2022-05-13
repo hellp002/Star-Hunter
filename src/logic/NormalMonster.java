@@ -145,10 +145,6 @@ public class NormalMonster extends Enemy {
 
 	}
 
-	@Override
-	public int getZ() {
-		return z;
-	}
 
 	@Override
 	public void setHealth(int health, SetHealthType type) {
