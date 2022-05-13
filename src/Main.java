@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ public class Main extends Application {
 		// TODO Auto-generated method stub
 		SceneController.setWindow(primaryStage);
 		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image(ClassLoader.getSystemResource("pic/Skills/double.png").toString()));
 		HashMap<String, Scene> sceneMap = SceneController.getSceneMap();
 		HashMap<String, Parent> rootMap = SceneController.getRootMap();
 		HashMap<String, Controller> controlMap = SceneController.getControlMap();
