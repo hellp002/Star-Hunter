@@ -23,6 +23,9 @@ public class SFXPlayer {
 		final AudioClip SHOOT_BOSS = new AudioClip(ClassLoader.getSystemResource("sfx/rifle.wav").toString());
 		final AudioClip BUTTON = new AudioClip(ClassLoader.getSystemResource("sfx/btn.wav").toString());
 		final AudioClip MOUSEENTERBUTTON = new AudioClip(ClassLoader.getSystemResource("sfx/mouse_enter.wav").toString());
+		final AudioClip DIE = new AudioClip(ClassLoader.getSystemResource("sfx/die.wav").toString());
+		final AudioClip HURT = new AudioClip(ClassLoader.getSystemResource("sfx/damaged.wav").toString());
+		final AudioClip SHIELDBREAK = new AudioClip(ClassLoader.getSystemResource("sfx/sheidDown.wav").toString());
 		sfxMap.put("levelUp", LEVELUP);
 		sfxMap.put("shoot", SHOOT);
 		sfxMap.put("pickItem", PICKITEM);
@@ -32,6 +35,9 @@ public class SFXPlayer {
 		sfxMap.put("enter", MOUSEENTERBUTTON);
 		sfxMap.put("shootBoss", SHOOT_BOSS);
 		sfxMap.put("btn", BUTTON);
+		sfxMap.put("die", DIE);
+		sfxMap.put("hurt", HURT);
+		sfxMap.put("shieldBreak", SHIELDBREAK);
 	}
 
 	public static HashMap<String, AudioClip> getSfxMap() {
