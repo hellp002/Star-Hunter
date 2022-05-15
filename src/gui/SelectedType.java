@@ -12,8 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import logic.Player;
-import logic.SceneController;
+import logic.entity.Player;
 import tools.Data;
 
 public class SelectedType extends GridPane {
@@ -52,10 +51,11 @@ public class SelectedType extends GridPane {
 		this.setHgap(PADDING);
 		this.setVgap(PADDING);
 		type.setFont(Data.FONT16);
+		type.setFill(Color.ORANGE);
 		this.setOnMouseClicked((MouseEvent Event) ->{
 			onClickHandle();
 		});
-		type.setFill(Color.ORANGE);
+	
 		this.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 		this.setOnMouseEntered((MouseEvent Event) -> {
 			this.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));

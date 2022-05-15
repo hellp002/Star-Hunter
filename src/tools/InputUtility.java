@@ -2,10 +2,10 @@ package tools;
 
 import java.util.ArrayList;
 
+import gui.SceneController;
 import javafx.scene.input.KeyCode;
 import logic.GameLogic;
-import logic.Player;
-import logic.SceneController;
+import logic.entity.Player;
 
 public class InputUtility {
 	private static ArrayList<KeyCode> keyPressed = new ArrayList<>();

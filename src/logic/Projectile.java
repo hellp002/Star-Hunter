@@ -1,8 +1,14 @@
 package logic;
 
+import gui.SceneController;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
+import logic.entity.ChampionMonster;
+import logic.entity.Enemy;
+import logic.entity.Entity;
+import logic.entity.NormalMonster;
+import logic.entity.Player;
 import tools.Data;
 import tools.MathFunction;
 import tools.SetHealthType;

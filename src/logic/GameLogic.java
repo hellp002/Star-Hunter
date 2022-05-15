@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import bgm.AudioLoad;
 import bgm.SFXPlayer;
+import gui.SceneController;
+import logic.entity.ChampionMonster;
+import logic.entity.Enemy;
+import logic.entity.NormalMonster;
+import logic.entity.Player;
 import sharedObject.RenderableHolder;
 import tools.Data;
 
@@ -110,6 +115,7 @@ public class GameLogic {
 		for (GameObject each : copyOne()) {
 			each.update();
 		}
+		
 		update = false;
 		for (int i = 0; i < allEntity.size(); i++) {
 			for (int j = i; j < allEntity.size(); j++) {

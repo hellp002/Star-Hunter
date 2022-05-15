@@ -1,8 +1,11 @@
-package logic;
+package logic.potion;
 
 import bgm.SFXPlayer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import logic.GameObject;
+import logic.entity.Enemy;
+import logic.entity.Player;
 import tools.Data;
 
 public class SkillPointPotion extends Potion {

@@ -1,8 +1,10 @@
+package application;
 import java.io.IOException;
 import java.util.HashMap;
 
 import bgm.AudioLoad;
 import bgm.Music;
+import gui.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +14,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import logic.Controller;
-import logic.SceneController;
 
 public class Main extends Application {
 
@@ -40,7 +41,7 @@ public class Main extends Application {
 
 	private void loadMainMenuFile(HashMap<String, Scene> sceneMap, HashMap<String, Controller> controlMap)
 			throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu2.fxml"));
+		FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("MainMenu2.fxml"));
 		Scene sceneToAdd = new Scene(loader.load());
 		sceneMap.put("Main_Menu", sceneToAdd);
 		controlMap.put("Main_Menu", loader.getController());
@@ -49,22 +50,23 @@ public class Main extends Application {
 
 	private void loadTutorial(HashMap<String, Parent> rootMap, HashMap<String, Controller> controlMap)
 			throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Tutorial.fxml"));
+		FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("Tutorial.fxml"));
 		rootMap.put("Tutorial", loader.load());
 		controlMap.put("Tutorial", loader.getController());
 	}
+	
 	private void loadBGM() {
 		HashMap<String, MediaPlayer> mediaMap = AudioLoad.getMediaMap();
 		MediaPlayer bgm;
-		bgm = new MediaPlayer(new Media(getClass().getResource(Music.MAIN_MENU).toString()));
+		bgm = new MediaPlayer(new Media(ClassLoader.getSystemResource(Music.MAIN_MENU).toString()));
 		mediaMap.put("Main_Menu", bgm);
-		bgm = new MediaPlayer(new Media(getClass().getResource(Music.TUTORIAL).toString()));
+		bgm = new MediaPlayer(new Media(ClassLoader.getSystemResource(Music.TUTORIAL).toString()));
 		mediaMap.put("Tutorial", bgm);
-		bgm = new MediaPlayer(new Media(getClass().getResource(Music.Dungeon).toString()));
+		bgm = new MediaPlayer(new Media(ClassLoader.getSystemResource(Music.DUNGEON).toString()));
 		mediaMap.put("Dungeon", bgm);
-		bgm = new MediaPlayer(new Media(getClass().getResource(Music.LASTLONG).toString()));
+		bgm = new MediaPlayer(new Media(ClassLoader.getSystemResource(Music.LASTLONG).toString()));
 		mediaMap.put("Lastlong", bgm);
-		bgm = new MediaPlayer(new Media(getClass().getResource(Music.DEATH).toString()));
+		bgm = new MediaPlayer(new Media(ClassLoader.getSystemResource(Music.DEATH).toString()));
 		mediaMap.put("Death", bgm);
 	}
 

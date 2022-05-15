@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import logic.ChampionMonster;
-import logic.NormalMonster;
+import logic.entity.ChampionMonster;
+import logic.entity.NormalMonster;
 
 public class RenderableHolder {
 	private static RenderableHolder instance = new RenderableHolder();

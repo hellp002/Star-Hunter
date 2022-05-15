@@ -1,10 +1,14 @@
-package logic;
+package logic.entity;
 
 import java.util.Random;
 
 import bgm.SFXPlayer;
+import gui.SceneController;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import logic.GameLogic;
+import logic.potion.HealthPotion;
+import logic.potion.SkillPointPotion;
 import tools.Data;
 import tools.MathFunction;
 import tools.Move;

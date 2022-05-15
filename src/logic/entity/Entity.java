@@ -1,7 +1,10 @@
-package logic;
+package logic.entity;
 
 
 import javafx.scene.shape.Rectangle;
+import logic.GameLogic;
+import logic.GameObject;
+import logic.Projectile;
 import tools.MathFunction;
 import tools.Move;
 import tools.SetHealthType;

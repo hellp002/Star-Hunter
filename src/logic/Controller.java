@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import bgm.AudioLoad;
 import bgm.SFXPlayer;
+import gui.SceneController;
 import gui.Selection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

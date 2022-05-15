@@ -8,9 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import logic.Player;
-import logic.SceneController;
 import logic.SkillRequirementException;
+import logic.entity.Player;
 import tools.Ability;
 import tools.Data;
 import tools.SetHealthType;
@@ -67,11 +66,11 @@ public class SkillTree extends GridPane{
 		GridPane.setHalignment(skillPoint, HPos.CENTER);
 		this.setStyle("-fx-background-image: url('pic/overlay/skilltable.png');"
 				+ "-fx-background-size : 100% 100%;");
-		InitializeAll();
+		initializeAll();
 	}
 	
 	
-	private void InitializeAll() {
+	private void initializeAll() {
 		doubleShot.getSubmit().setOnAction((ActionEvent Event) -> {
 			try {
 				doubleShotHandle();

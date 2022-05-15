@@ -1,13 +1,16 @@
-package logic;
+package logic.entity;
 
 import java.util.ArrayList;
 
 import bgm.AudioLoad;
 import bgm.SFXPlayer;
+import gui.SceneController;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
+import logic.GameObject;
+import logic.SkillRequirementException;
 import tools.Ability;
 import tools.Data;
 import tools.FireDirection;
@@ -93,9 +96,7 @@ public class Player extends Entity {
 		this.modelSize = 40;
 	}
 
-	public int getSkillPoint() {
-		return skillPoint;
-	}
+	
 
 	public void useSkillPoint(int usedSkillPoint) throws SkillRequirementException {
 		if (skillPoint - usedSkillPoint < 0) {
@@ -103,30 +104,8 @@ public class Player extends Entity {
 		}
 		setSkillPoint(skillPoint - usedSkillPoint);
 	}
-
-	public void setMaxArmour(int maxArmour) {
-		this.maxArmour = maxArmour;
-	}
-
-	public void setSkillPoint(int skillPoint) {
-		this.skillPoint = skillPoint;
-	}
-
-	public ArrayList<Ability> getAllAbility() {
-		return allAbility;
-	}
-
-	public static double[] getPlayerLocation() {
-		return playerLocation;
-	}
-
-	public boolean isMaxLevel() {
-		return maxLevel;
-	}
-
-	public int getLevel() {
-		return level;
-	}
+	
+	
 
 	@Override
 	public void update() {
@@ -191,22 +170,8 @@ public class Player extends Entity {
 			firePointer = FireDirection.UP;
 		}
 	}
-
-	public int getArmour() {
-		return armour;
-	}
-
-	public int getMaxArmour() {
-		return maxArmour;
-	}
-
-	public int getXp() {
-		return xp;
-	}
-
-	public int getMaxXP() {
-		return maxXP;
-	}
+	
+	
 
 	
 	@Override
@@ -448,10 +413,9 @@ public class Player extends Entity {
 			}
 		}
 	}
-
-	public boolean isImmune() {
-		return immune;
-	}
+	
+	
+	
 
 	public void setXP(int xp) {
 		if (level == MAXLEVEL) {
@@ -535,6 +499,54 @@ public class Player extends Entity {
 	@Override
 	public Rectangle getHitBox() {
 		return new Rectangle(this.x - modelSize / 2, this.y - modelSize / 2, modelSize, modelSize);
+	}
+	
+	public int getSkillPoint() {
+		return skillPoint;
+	}
+	
+	public void setMaxArmour(int maxArmour) {
+		this.maxArmour = maxArmour;
+	}
+
+	public void setSkillPoint(int skillPoint) {
+		this.skillPoint = skillPoint;
+	}
+
+	public ArrayList<Ability> getAllAbility() {
+		return allAbility;
+	}
+
+	public static double[] getPlayerLocation() {
+		return playerLocation;
+	}
+
+	public boolean isMaxLevel() {
+		return maxLevel;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public int getArmour() {
+		return armour;
+	}
+
+	public int getMaxArmour() {
+		return maxArmour;
+	}
+
+	public int getXp() {
+		return xp;
+	}
+
+	public int getMaxXP() {
+		return maxXP;
+	}
+
+	public boolean isImmune() {
+		return immune;
 	}
 
 

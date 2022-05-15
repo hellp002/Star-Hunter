@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import logic.GameLogic;
-import logic.Player;
+import logic.entity.Player;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import tools.Data;
@@ -13,30 +13,19 @@ import tools.InputUtility;
 
 public class MainGame extends Canvas {
 
-	private static MainGame instance = new MainGame();
-	private static TextInBar hpbar = new TextInBar();
-	private static TextInBar xpbar = new TextInBar();
-
-	public static TextInBar getHpbar() {
-		return hpbar;
-	}
-
-	public static TextInBar getXpbar() {
-		return xpbar;
-	}
+	private TextInBar hpbar;
+	private TextInBar xpbar;
 
 	public MainGame() {
 		super(Data.WIDTH, Data.HEIGHT);
+		hpbar = new TextInBar();
+		xpbar = new TextInBar();
 		this.setVisible(true);
-		addListerner();
+		addListener();
 
 	}
 
-	public static MainGame getInstance() {
-		return instance;
-	}
-
-	private void addListerner() {
+	private void addListener() {
 		this.setOnKeyPressed((KeyEvent event) -> {
 			InputUtility.setKeyPressed(event.getCode(), true);
 		});
@@ -57,6 +46,14 @@ public class MainGame extends Canvas {
 				entity.draw(gc);
 			}
 		}
+	}
+
+	public TextInBar getHpbar() {
+		return hpbar;
+	}
+
+	public TextInBar getXpbar() {
+		return xpbar;
 	}
 
 	private void drawInfo() {
@@ -113,16 +110,18 @@ public class MainGame extends Canvas {
 					COORDINATE_BAR[1][0] + barSize[0] + padding + textLength + padding,
 					COORDINATE_BAR[1][1] + barSize[1]);
 		}
+		final int TEXTLENGTH = 75;
+		gc.fillText(
+				"Attack : " + information.getPower() + "\tAttackSpeed : "
+						+ String.format("%.1f", information.getAttackSpeed()) + "\tShot Speed : "
+						+ information.getShootSpeed() + "\tSpeed : " + information.getSpeed(),
+				COORDINATE_BAR[1][0] + barSize[0] + padding + TEXTLENGTH + padding, COORDINATE_BAR[0][1] + barSize[1]);
 
 		gc.setFill(Color.RED);
-		final int TEXTLENGTH = 75;
+
 		gc.fillText("Wave : " + GameLogic.getInstance().getWave(), COORDINATE_BAR[1][0] + barSize[0] + padding,
 				COORDINATE_BAR[0][1] + barSize[1]);
-		gc.setFill(Color.ORANGE);
-		gc.fillText(
-				"Attack : " + information.getPower() + "\tAttackSpeed : " + String.format("%.1f",information.getAttackSpeed())
-						+ "\tShot Speed : " + information.getShootSpeed() + "\tSpeed : " + information.getSpeed(),
-				COORDINATE_BAR[1][0] + barSize[0] + padding + TEXTLENGTH + padding, COORDINATE_BAR[0][1] + barSize[1]);
+
 		gc.drawImage(Data.HEART, 12.5, COORDINATE_BAR[0][1], Data.ICONSIZE, Data.ICONSIZE);
 		gc.drawImage(Data.LEVEL, 12.5, COORDINATE_BAR[1][1], Data.ICONSIZE, Data.ICONSIZE);
 

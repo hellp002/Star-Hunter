@@ -11,27 +11,27 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import tools.Data;
 
-public class SkillLine extends VBox{
+public class SkillLine extends VBox {
 	private ImageView skill;
 	private Button submit;
-	
-	public Button getSubmit() {
-		return submit;
-	}
 
-	
-	
-	public SkillLine(Image image,String text) {
+	public SkillLine(Image image, String text) {
 		this.setPadding(new Insets(10));
 		skill = new ImageView(image);
 		skill.setFitHeight(50);
 		skill.setFitWidth(50);
 		this.setAlignment(Pos.CENTER);
 		submit = new Button(text);
-		submit.setOnMouseEntered((MouseEvent Event) ->{SFXPlayer.getSfxMap().get("enter").play();submit.setStyle("");});
+		submit.setOnMouseEntered((MouseEvent Event) -> {
+			SFXPlayer.getSfxMap().get("enter").play();
+		});
 		submit.setFont(Data.FONT16);
 		submit.setTextFill(Color.ORANGE);
-		this.getChildren().addAll(skill,submit);
+		this.getChildren().addAll(skill, submit);
+	}
+
+	public Button getSubmit() {
+		return submit;
 	}
 
 }

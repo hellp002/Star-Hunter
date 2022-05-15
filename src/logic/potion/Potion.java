@@ -1,6 +1,9 @@
-package logic;
+package logic.potion;
 
+import gui.SceneController;
 import javafx.scene.shape.Rectangle;
+import logic.GameObject;
+import logic.entity.Enemy;
 import tools.Data;
 
 public abstract class Potion extends GameObject {
@@ -10,8 +13,8 @@ public abstract class Potion extends GameObject {
 	public Potion(Enemy enemy) {
 		this.visible = true;
 		this.deleted = false;
-		this.x = enemy.x;
-		this.y = enemy.y;
+		this.x = enemy.getX();
+		this.y = enemy.getY();
 		spawnTime = System.currentTimeMillis() - SceneController.getTimeAdd();
 		flashingCounter = 0;
 	}
