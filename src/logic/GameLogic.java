@@ -16,29 +16,17 @@ public class GameLogic {
 
 	private static GameLogic instance = new GameLogic();
 	private ArrayList<GameObject> allEntity;
-	private ArrayList<Projectile> allBullet;
 	private ArrayList<Enemy> enemys;
 	private boolean running,update;
-	public boolean isUpdate() {
-		return update;
-	}
-
 	private int wave;
+	
 
-	public static GameLogic getInstance() {
-		return instance;
-	}
-
-	public static void newGame() {
-		instance = new GameLogic();
-
-	}
+	
 
 	public GameLogic() {
 		SceneController.setTimeAdd(0);
 		RenderableHolder.getInstance().getEntities().clear();
 		allEntity = new ArrayList<GameObject>();
-		allBullet = new ArrayList<Projectile>();
 		enemys = new ArrayList<Enemy>();
 		Tiles tiles = new Tiles();
 		running = true;
@@ -50,10 +38,11 @@ public class GameLogic {
 
 
 
+	public static void newGame() {
+		instance = new GameLogic();
 
-	public boolean isRunning() {
-		return running;
 	}
+	
 
 	public void addNewObject(Tiles tiles) {
 		RenderableHolder.getInstance().add(tiles);
@@ -78,7 +67,7 @@ public class GameLogic {
 				AudioLoad.playMusic("Lastlong");
 			}
 			final int divideFactor = 5;
-			if ((wave % 5) == 0) {
+			if ((wave % divideFactor) == 0) {
 				for (int i = 0; i < wave / divideFactor; i++) {
 					Enemy creep = new ChampionMonster(Data.BASE_HP_CM + Data.HP_PER_WAVE_CM * wave,
 							Data.BASE_PW_CM +(int) (Data.PW_PER_WAVE_CM * wave), Data.BASE_S_CM,
@@ -104,9 +93,7 @@ public class GameLogic {
 		}
 	}
 
-	public int getWave() {
-		return wave;
-	}
+	
 
 	public void logicUpdate() {
 		
@@ -147,13 +134,7 @@ public class GameLogic {
 		}
 	}
 
-	public void setRunning(boolean running) {
-		this.running = running;
-	}
-
-	public ArrayList<Projectile> getAllBullet() {
-		return allBullet;
-	}
+	
 
 	private ArrayList<GameObject> copyOne() {
 		ArrayList<GameObject> copy = new ArrayList<GameObject>();
@@ -161,5 +142,28 @@ public class GameLogic {
 			copy.add(e);
 		}
 		return copy;
+	}
+	
+	public boolean isUpdate() {
+		return update;
+	}
+
+	
+
+	public static GameLogic getInstance() {
+		return instance;
+	}
+	
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+
+
+	public int getWave() {
+		return wave;
+	}
+	
+	public boolean isRunning() {
+		return running;
 	}
 }

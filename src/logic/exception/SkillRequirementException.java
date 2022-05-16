@@ -1,4 +1,4 @@
-package logic;
+package logic.exception;
 
 public class SkillRequirementException extends Exception {
 

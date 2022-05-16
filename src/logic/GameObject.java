@@ -6,7 +6,6 @@ import tools.Updatable;
 
 public abstract class GameObject implements Updatable,IRenderable  {
 	protected double x,y;
-	protected double radius; 
 	protected boolean visible,deleted;
 	
 	

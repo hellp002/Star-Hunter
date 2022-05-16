@@ -13,11 +13,7 @@ public class Tiles implements IRenderable {
 	
 	
 	private static int[][] field = new int[(Data.BOARDERDOWN - Data.BOARDERTOP) / Data.PIXEL + 2][(Data.BOARDERRIGHT - Data.BOARDERLEFT) / Data.PIXEL + 2];
-	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return -10;
-	}
+
 	
 	static {
 		Random rd = new Random();
@@ -80,7 +76,11 @@ public class Tiles implements IRenderable {
 		}
 
 	}
-
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return -10;
+	}
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub

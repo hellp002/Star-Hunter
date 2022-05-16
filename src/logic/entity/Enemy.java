@@ -5,10 +5,13 @@ import logic.GameObject;
 public abstract class Enemy extends Entity {
 
 	private int giveXP;
+	
+	public Enemy(int health, int power) {
+		super(health, power);
+		this.movingCounter = 0;
 
-	public int getGiveXP() {
-		return giveXP;
 	}
+	
 
 	public void setGiveXP(int giveXP) {
 		if (giveXP < 0) {
@@ -25,11 +28,7 @@ public abstract class Enemy extends Entity {
 		player.setXP(player.getXp() + giveXP);
 	}
 
-	public Enemy(int health, int power) {
-		super(health, power);
-		this.movingCounter = 0;
-
-	}
+	
 
 	@Override
 	public void onCollision(GameObject other) {
@@ -41,6 +40,10 @@ public abstract class Enemy extends Entity {
 			player.takeDamge(this.getPower());
 		}
 
+	}
+	
+	public int getGiveXP() {
+		return giveXP;
 	}
 
 }

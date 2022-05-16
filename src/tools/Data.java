@@ -56,7 +56,6 @@ public class Data {
 	public static final int ITEMSIZE = 15;
 	public static final long ITEM_DELAY_DELETE = 10000;
 	public static final long ITEM_DELAY_WARNING = 7000;
-	public static final double ACCEPTABLE_RANGE_NOTUPDATE = 0.5;
 	public static final double HEALTH_DROP_CHANCE = 0.10;
 	public static final double SKILL_DROP_CHANCE = 0.025;
 	public static final long OPEN_DELAY = 3000;

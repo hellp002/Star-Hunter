@@ -20,7 +20,7 @@ public abstract class Entity extends GameObject{
 
 	protected long lastDead;
 	protected int z;
-	protected boolean dead;
+	private boolean dead;
 	
 	private Move currentMoveType;
 	
@@ -29,21 +29,16 @@ public abstract class Entity extends GameObject{
 		visible = true;
 		deleted = false;
 		this.health = health;
+		this.maxHealth = health;
 		setPower(power);
 		this.z = 5;
 		setCurrentMoveType(Move.RIGHT);
 	}
 	
-	public int getHealth() {
-		return health;
-	}
 
 	public abstract void setHealth(int health,SetHealthType type); 
 	
 
-	public int getPower() {
-		return power;
-	}
 
 	public void setPower(int power) {
 		if (power < 1) {
@@ -52,31 +47,45 @@ public abstract class Entity extends GameObject{
 		this.power = power;
 	}
 	
-	public double getSpeed() {
-		return speed;
-	}
 	
-	public int getMaxHealth() {
-		return maxHealth;
-	}
 
 	protected void shootBullet(Vector2D refVector,MathFunction speed) {
 		if (this instanceof Enemy) {
 			Projectile eBullet = new Projectile(this,refVector,States.ENEMY,speed);
-			GameLogic.getInstance().getAllBullet().add(eBullet);
 			GameLogic.getInstance().addNewObject(eBullet);
 		} else if (this instanceof Player) {
 			Projectile eBullet = new Projectile(this,refVector,States.ALLIES,speed);
-			GameLogic.getInstance().getAllBullet().add(eBullet);
 			GameLogic.getInstance().addNewObject(eBullet);
 			
 		}
 		
 	}
 	
+	@Override
+	public Rectangle getHitBox() {
+		return new Rectangle(this.x - modelSize / 2, this.y - modelSize / 2, modelSize, modelSize);
+	}
+	
+	public double getSpeed() {
+		return speed;
+	}
+	
+	public int getHealth() {
+		return health;
+	}
+
+	
+	public int getMaxHealth() {
+		return maxHealth;
+	}
 	public boolean isVisible() {
 		return visible;
 	}
+	
+	public int getPower() {
+		return power;
+	}
+
 	
 	public boolean isDeleted() {
 		return deleted;
@@ -123,8 +132,5 @@ public abstract class Entity extends GameObject{
 		return dead;
 	}
 	
-	@Override
-	public Rectangle getHitBox() {
-		return new Rectangle(this.x - modelSize / 2, this.y - modelSize / 2, modelSize, modelSize);
-	}
+	
 }

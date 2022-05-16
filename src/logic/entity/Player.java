@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 import logic.GameObject;
-import logic.SkillRequirementException;
+import logic.exception.SkillRequirementException;
 import tools.Ability;
 import tools.Data;
 import tools.FireDirection;
@@ -37,7 +37,6 @@ public class Player extends Entity {
 	private static Image gun = new Image(ClassLoader.getSystemResource("pic/weapon/pistol.png").toString());
 	private FireDirection firePointer;
 	private long[] coolDownTime;
-	
 
 	static {
 		playerModel1[0] = new Image(ClassLoader.getSystemResource("pic/player/standstill/knight_0.png").toString());
@@ -48,55 +47,49 @@ public class Player extends Entity {
 		playerModel1[5] = new Image(ClassLoader.getSystemResource("pic/player/dead/knight_dead.png").toString());
 	}
 
-	public static Player getInstance() {
-		return instance;
-	}
-
-	public static void newPlayer(int health, int power, double speed, double shootSpeed, double attackSpeed, int armour) {
-		instance = new Player(health, power, speed, shootSpeed, attackSpeed, armour);
-	}
-
 	public Player(int health, int power, double speed, double shootSpeed, double attackSpeed, int armour) {
 		super(health, power);
-		dead = false;
+		setDead(false);
 		immune = false;
-		this.radius = 20;
 		this.speed = speed;
+		this.shootSpeed = shootSpeed;
+		this.attackSpeed = attackSpeed;
+		this.armour = armour;
+		this.maxArmour = armour;
 		lastDamageTaken = new long[2];
 		for (int i = 0; i < 2; i++) {
 			lastDamageTaken[i] = System.currentTimeMillis() - SceneController.getTimeAdd(); // slot 0 for damage health
 																							// slot 1 for damage armour
 		}
-		this.shootSpeed = shootSpeed;
-		this.attackSpeed = attackSpeed;
 		allAbility = new ArrayList<Ability>();
 		fireDirection = new Vector2D();
 		movingVector = new Vector2D();
-		this.radius = 10;
 		this.x = Data.WIDTH / 2;
 		this.y = Data.HEIGHT / 2;
 		playerLocation[0] = this.x;
 		playerLocation[1] = this.y;
 		flashCount = 0;
-		maxHealth = health;
+		bulletCount = 0;
+		movingCounter = 0;
 		skillPoint = 0;
 		this.xp = 0;
 		this.z = 3;
 		this.level = 1;
-		this.armour = armour;
-		this.maxArmour = armour;
 		this.maxXP = Data.LEVELTABLE[level - 1];
-		movingCounter = 0;
+
 		maxLevel = false;
 		coolDownTime = new long[4]; // slot 0 cooldown of firing //slot 1 cooldown of around shot
-		for (int i = 0; i < 4; i++) {  // slot 2 for regen armour // slot 3 for multishot
+		for (int i = 0; i < 4; i++) { // slot 2 for regen armour // slot 3 for multishot
 			coolDownTime[i] = System.currentTimeMillis() - SceneController.getTimeAdd();
 		}
-		bulletCount = 0;
+
 		this.modelSize = 40;
 	}
 
-	
+	public static void newPlayer(int health, int power, double speed, double shootSpeed, double attackSpeed,
+			int armour) {
+		instance = new Player(health, power, speed, shootSpeed, attackSpeed, armour);
+	}
 
 	public void useSkillPoint(int usedSkillPoint) throws SkillRequirementException {
 		if (skillPoint - usedSkillPoint < 0) {
@@ -104,19 +97,17 @@ public class Player extends Entity {
 		}
 		setSkillPoint(skillPoint - usedSkillPoint);
 	}
-	
-	
 
 	@Override
 	public void update() {
-		if (dead) {
+		if (isDead()) {
 			long now = System.currentTimeMillis() - SceneController.getTimeAdd();
 			movingCounter = 0;
 			if (now - lastDead >= Data.CORPSE_DELAY) {
-				
+
 				SceneController.getAnimation().stop();
 				SceneController.loadGameOver();
-				
+
 			}
 			return;
 		}
@@ -170,13 +161,10 @@ public class Player extends Entity {
 			firePointer = FireDirection.UP;
 		}
 	}
-	
-	
 
-	
 	@Override
 	public void draw(GraphicsContext gc) {
-		if (dead) {
+		if (isDead()) {
 			gc.drawImage(playerModel1[5], this.x - modelSize / 2, this.y - modelSize / 2, modelSize, modelSize);
 			return;
 		}
@@ -413,9 +401,6 @@ public class Player extends Entity {
 			}
 		}
 	}
-	
-	
-	
 
 	public void setXP(int xp) {
 		if (level == MAXLEVEL) {
@@ -433,7 +418,7 @@ public class Player extends Entity {
 			if (now - coolDownTime[2] >= Data.ARMOUR_COOLDOWN) {
 				coolDownTime[2] = now;
 				if (maxArmour > 10) {
-					setArmour(armour + (int) Math.ceil(maxArmour*Data.PERCENTAGE_REGEN_ARMOUR));
+					setArmour(armour + (int) Math.ceil(maxArmour * Data.PERCENTAGE_REGEN_ARMOUR));
 				} else {
 					setArmour(armour + 1);
 				}
@@ -478,7 +463,7 @@ public class Player extends Entity {
 				if (health <= 0) {
 					health = 0;
 					this.lastDead = now;
-					this.dead = true;
+					setDead(true);
 					this.health = health;
 					SFXPlayer.getSfxMap().get("die").play();
 					return;
@@ -496,15 +481,10 @@ public class Player extends Entity {
 
 	}
 
-	@Override
-	public Rectangle getHitBox() {
-		return new Rectangle(this.x - modelSize / 2, this.y - modelSize / 2, modelSize, modelSize);
-	}
-	
 	public int getSkillPoint() {
 		return skillPoint;
 	}
-	
+
 	public void setMaxArmour(int maxArmour) {
 		this.maxArmour = maxArmour;
 	}
@@ -549,6 +529,8 @@ public class Player extends Entity {
 		return immune;
 	}
 
-
+	public static Player getInstance() {
+		return instance;
+	}
 
 }

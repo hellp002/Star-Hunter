@@ -25,7 +25,7 @@ public class Projectile extends GameObject {
 	private double shootSpeed;
 	private static final Image[] BULLET_IMG = new Image[5];
 	private Entity shooter;
-	private final double BULLET_SIZE = 20;
+	private static final double BULLET_SIZE = 20;
 	
 	static {
 		BULLET_IMG[0] = new Image(ClassLoader.getSystemResource("pic/bullet/bullet_boss.png").toString());
@@ -63,7 +63,7 @@ public class Projectile extends GameObject {
 			break;
 		}
 		if (isOutOfFrame()) {
-			visible = false;
+			visible = false;	
 			deleted = true;
 		}
 
@@ -99,11 +99,7 @@ public class Projectile extends GameObject {
 		y += yMove;
 	}
 	
-	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public void draw(GraphicsContext gc) {
@@ -126,15 +122,7 @@ public class Projectile extends GameObject {
 
 	}
 
-	@Override
-	public boolean isVisible() {
-		return visible;
-	}
-
-	@Override
-	public boolean isDeleted() {
-		return deleted;
-	}
+	
 
 	@Override
 	public void onCollision(GameObject other) {
@@ -159,6 +147,22 @@ public class Projectile extends GameObject {
 	public Rectangle getHitBox() {
 		// TODO Auto-generated method stub
 		return new Rectangle(this.x - BULLET_SIZE/2, this.y - BULLET_SIZE/2,BULLET_SIZE,BULLET_SIZE);
+	}
+	
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public boolean isVisible() {
+		return visible;
+	}
+
+	@Override
+	public boolean isDeleted() {
+		return deleted;
 	}
 
 

@@ -53,16 +53,13 @@ public class NormalMonster extends Enemy {
 		this.attackSpeed = Data.BASE_AS_NM + rd.nextDouble(Data.RAND_RANGE_AS);
 		lastShoot = System.currentTimeMillis() - SceneController.getTimeAdd();
 		vectorToPlayer = new Vector2D(0, 0);
-		this.dead = false;
+		setDead(false);
 		setGiveXP(Data.BASE_XP_NM + (int) (Data.XP_PER_WAVE_NM * GameLogic.getInstance().getWave()));
 		this.modelSize = 40;
 
 	}
 
-	public long getLastShoot() {
-		return lastShoot;
-	}
-
+	
 	@Override
 	public void update() {
 		if (isDead()) {
@@ -103,9 +100,7 @@ public class NormalMonster extends Enemy {
 		}
 	}
 
-	public Vector2D getVectorToPlayer() {
-		return vectorToPlayer;
-	}
+	
 
 	protected void move() {
 		if (vectorToPlayer.getX() >= 0) {
@@ -139,8 +134,8 @@ public class NormalMonster extends Enemy {
 	protected void updateVectorToPlayer() {
 		double[] playerLocation = Player.getPlayerLocation();
 		Vector2D refVector;
-		if ((Math.abs(playerLocation[0] - x) < Data.ACCEPTABLE_RANGE_NOTUPDATE)
-				&& (Math.abs(playerLocation[1] - y) < Data.ACCEPTABLE_RANGE_NOTUPDATE)) {
+		if ((Math.abs(playerLocation[0] - x) < speed)
+				&& (Math.abs(playerLocation[1] - y) < speed)) {
 			refVector = new Vector2D(0, 0);
 		} else {
 			refVector = new Vector2D(playerLocation[0] - x, playerLocation[1] - y);
@@ -156,7 +151,7 @@ public class NormalMonster extends Enemy {
 			if (health < 0) {
 				health = 0;
 				giveXPToPlayer();
-				this.dead = true;
+				setDead(true);
 				lastDead = System.currentTimeMillis() - SceneController.getTimeAdd();
 			}
 			this.health = health;
@@ -186,6 +181,15 @@ public class NormalMonster extends Enemy {
 					this.y - modelSize / 2, -modelSize, modelSize);
 		}
 	}
+	
+	public Vector2D getVectorToPlayer() {
+		return vectorToPlayer;
+	}
+	
+	public long getLastShoot() {
+		return lastShoot;
+	}
+
 
 
 }

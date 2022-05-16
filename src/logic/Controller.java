@@ -34,9 +34,6 @@ public class Controller implements Initializable {
 		
 	}
 
-	public StackPane getButtonZone() {
-		return buttonZone;
-	}
 
 	@FXML
 	public void getTutorial() {
@@ -65,5 +62,10 @@ public class Controller implements Initializable {
 	public StackPane getPane() {
 		return pane;
 	}
+	
+	public StackPane getButtonZone() {
+		return buttonZone;
+	}
+
 
 }

@@ -18,7 +18,6 @@ public class ChampionMonster extends NormalMonster {
 
 	private Ability ability;
 	private long[] coolDownTime;
-	private double maxHealth;
 	private final static Image[] CHAMPION_MODEL = new Image[6];
 	static {
 		CHAMPION_MODEL[0] = new Image(ClassLoader.getSystemResource("pic/monster/standstill/boss.png").toString());
@@ -37,7 +36,6 @@ public class ChampionMonster extends NormalMonster {
 		for (int i = 0; i < 3; i++) {
 			coolDownTime[i] = System.currentTimeMillis() - SceneController.getTimeAdd();
 		}
-		maxHealth = this.health;
 		Random rd = new Random();
 		this.attackSpeed = Data.BASE_AS_CM + rd.nextDouble(Data.RAND_RANGE_AS);
 		setGiveXP(Data.BASE_XP_CM + Data.XP_PER_WAVE_CM * GameLogic.getInstance().getWave());
