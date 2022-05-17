@@ -3,10 +3,10 @@ package logic.potion;
 import bgm.SFXPlayer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import logic.GameObject;
 import logic.entity.Enemy;
 import logic.entity.Player;
 import tools.Data;
+import tools.Hitable;
 
 public class SkillPointPotion extends Potion {
 	
@@ -18,7 +18,7 @@ public class SkillPointPotion extends Potion {
 	}
 	
 	@Override
-	public void onCollision(GameObject other) {
+	public void onCollision(Hitable other) {
 		if (other instanceof Player && !isDeleted()) {
 			Player player = (Player) other;
 			SFXPlayer.getSfxMap().get("pickItem").play();

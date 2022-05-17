@@ -30,12 +30,6 @@ public class Vector2D {
 		return new Vector2D((this.x/this.getMagnitude()),(this.y/this.getMagnitude()));
 	}
 	
-	public Vector2D getUnitVectorMulConst(int cons) {
-		Vector2D copyOne = getUnitVector();
-		copyOne.setX(copyOne.x * cons);
-		copyOne.setY(copyOne.y * cons);
-		return copyOne;
-	}
 	
 	public void setRotatingVector(double degree) {
 		double newX = this.x * Math.cos(Math.toRadians(degree)) - this.y * Math.sin(Math.toRadians(degree));
@@ -44,12 +38,12 @@ public class Vector2D {
 		this.setY(newY);
 		
 	}
-	
-	public void addVector(Vector2D other) {
-		setX(x + other.getX());
-		setY(y + other.getY());
-	}
 
+	public void reset() {
+		setX(0);
+		setY(0);
+	}
+	
 	public double getX() {
 		return x;
 	}
@@ -64,10 +58,6 @@ public class Vector2D {
 
 	public void setY(double y) {
 		this.y = y;
-	}
-	public void reset() {
-		setX(0);
-		setY(0);
 	}
 	
 	

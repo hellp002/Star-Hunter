@@ -50,9 +50,7 @@ public class RenderableHolder {
 		}
 	}
 
-	public static RenderableHolder getInstance() {
-		return instance;
-	}
+	
 
 	public void add(IRenderable entity) {
 		entities.add(entity);
@@ -69,6 +67,10 @@ public class RenderableHolder {
 
 	public List<IRenderable> getEntities() {
 		return entities;
+	}
+	
+	public static RenderableHolder getInstance() {
+		return instance;
 	}
 
 }

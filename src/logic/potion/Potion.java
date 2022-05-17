@@ -1,4 +1,4 @@
-package logic.potion;
+	package logic.potion;
 
 import gui.SceneController;
 import javafx.scene.shape.Rectangle;
@@ -35,6 +35,11 @@ public abstract class Potion extends GameObject {
 			}
 		}
 	}
+	
+	@Override
+	public Rectangle getHitBox() {
+		return new Rectangle(x - Data.ITEMSIZE / 2, y - Data.ITEMSIZE / 2, Data.ITEMSIZE, Data.ITEMSIZE);
+	}
 
 	@Override
 	public int getZ() {
@@ -52,8 +57,5 @@ public abstract class Potion extends GameObject {
 	}
 
 
-	@Override
-	public Rectangle getHitBox() {
-		return new Rectangle(x - Data.ITEMSIZE / 2, y - Data.ITEMSIZE / 2, Data.ITEMSIZE, Data.ITEMSIZE);
-	}
+	
 }

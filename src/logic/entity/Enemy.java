@@ -1,6 +1,6 @@
 package logic.entity;
 
-import logic.GameObject;
+import tools.Hitable;
 
 public abstract class Enemy extends Entity {
 
@@ -31,7 +31,7 @@ public abstract class Enemy extends Entity {
 	
 
 	@Override
-	public void onCollision(GameObject other) {
+	public void onCollision(Hitable other) {
 		if (isDead()) {
 			return;
 		}

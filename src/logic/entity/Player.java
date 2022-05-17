@@ -2,18 +2,16 @@ package logic.entity;
 
 import java.util.ArrayList;
 
-import bgm.AudioLoad;
 import bgm.SFXPlayer;
 import gui.SceneController;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.shape.Rectangle;
-import logic.GameObject;
 import logic.exception.SkillRequirementException;
 import tools.Ability;
 import tools.Data;
 import tools.FireDirection;
+import tools.Hitable;
 import tools.InputUtility;
 import tools.MathFunction;
 import tools.Move;
@@ -206,7 +204,7 @@ public class Player extends Entity {
 	}
 
 	@Override
-	public void onCollision(GameObject other) {
+	public void onCollision(Hitable other) {
 //		if (allAbility.contains(Ability.REFLECT) && (other instanceof Enemy)) {
 //			Enemy enemy = (Enemy) other;
 //			enemy.setHealth(enemy.getHealth() - enemy.getPower(), SetHealthType.DAMAGE);
@@ -247,6 +245,26 @@ public class Player extends Entity {
 		}
 	}
 
+	
+
+	private void trippleShot() {
+		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
+		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_DOUBLE),
+				Data.ATTACKSPEED_CAP)) || fire) {
+			coolDownTime[0] = now;
+			multiFire(3);
+		}
+	}
+
+	private void quadraShot() {
+		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
+		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_DOUBLE),
+				Data.ATTACKSPEED_CAP)) || fire) {
+			coolDownTime[0] = now;
+			multiFire(4);
+		}
+	}
+	
 	private void multiFire(int bulletCount) {
 		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
 		if (!fire) {
@@ -264,24 +282,6 @@ public class Player extends Entity {
 			rememberVector = null;
 			fire = false;
 			this.bulletCount = 0;
-		}
-	}
-
-	private void trippleShot() {
-		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
-		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_DOUBLE),
-				Data.ATTACKSPEED_CAP)) || fire) {
-			coolDownTime[0] = now;
-			multiFire(3);
-		}
-	}
-
-	private void quadraShot() {
-		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
-		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_DOUBLE),
-				Data.ATTACKSPEED_CAP)) || fire) {
-			coolDownTime[0] = now;
-			multiFire(4);
 		}
 	}
 

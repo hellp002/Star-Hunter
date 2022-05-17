@@ -10,6 +10,7 @@ import logic.entity.Entity;
 import logic.entity.NormalMonster;
 import logic.entity.Player;
 import tools.Data;
+import tools.Hitable;
 import tools.MathFunction;
 import tools.SetHealthType;
 import tools.States;
@@ -125,7 +126,7 @@ public class Projectile extends GameObject {
 	
 
 	@Override
-	public void onCollision(GameObject other) {
+	public void onCollision(Hitable other) {
 		if (state.equals(States.ALLIES) && (other instanceof Enemy)) {
 			Enemy enemy = (Enemy) other;
 			if (enemy.isDead()) {
