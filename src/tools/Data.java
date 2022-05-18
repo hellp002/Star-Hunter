@@ -43,7 +43,7 @@ public class Data {
 	public static final double BASE_SP_NM = 2.0;
 	public static final double SP_PER_WAVE_NM = 0.1;
 	public static final double BASE_SP_CM = 4.0;
-	public static final double SP_PER_WAVE_CM = 0.2;
+	public static final double SP_PER_WAVE_CM = 0.1;
 	public static final double BASE_AS_NM = 0.5;
 	public static final double BASE_AS_CM = 0.3;
 	public static final double RAND_RANGE_AS = 1.0;
@@ -63,7 +63,6 @@ public class Data {
 	public static final int POWER_UP = 1;
 	public static final int ARMOUR_UP = 3;
 	public static final int HEALTH_UP = 5;
-	public static final double SHOTSPEED_UP = 0.5;
 	public static final double SKILLTABLE_LOC_X = 200;
 	public static final double SKILLTABLE_LOC_Y = 200;
 	public static final Image HEART = new Image(ClassLoader.getSystemResource("pic/heart.png").toString());

@@ -22,7 +22,7 @@ public class SkillTree extends GridPane{
 	private static final Image ARMOUR = new Image(ClassLoader.getSystemResource("pic/Skills/Armour.png").toString());
 	private static final Image HEALTH = new Image(ClassLoader.getSystemResource("pic/Skills/Health.png").toString());
 	private static final Image POWER = new Image(ClassLoader.getSystemResource("pic/Skills/Power.png").toString());
-	private static final Image AROUNDSHOT = new Image(ClassLoader.getSystemResource("pic/Skills/ShootSpeed.png").toString());
+	private static final Image AROUNDSHOT = new Image(ClassLoader.getSystemResource("pic/Skills/AroundShot.png").toString());
 	private SkillLine doubleShot;
 	private SkillLine trippleShot;
 	private SkillLine quadraShot;

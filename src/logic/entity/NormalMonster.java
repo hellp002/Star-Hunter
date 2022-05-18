@@ -155,6 +155,7 @@ public class NormalMonster extends Enemy {
 				lastDead = System.currentTimeMillis() - SceneController.getTimeAdd();
 			}
 			this.health = health;
+			
 		}
 	}
 

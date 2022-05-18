@@ -14,8 +14,8 @@ public class Selection extends GridPane {
 	
 	public Selection() {
 		SelectedType choice1 = new SelectedType(100,15,3,5.5,1.3,15,"Balancer","Balance in all thing");
-		SelectedType choice2 = new SelectedType(200,12,2.8,5,1.4,20,"Tank","Excel in Vitallity but cost with Agility and Power");
-		SelectedType choice3 = new SelectedType(50,18,3.8,6,1.2,10,"Speedy","Excel in Agility and Power but cost with Vitallity");
+		SelectedType choice2 = new SelectedType(200,12,2.8,5,1.4,20,"Tank","Excel in Vitality but cost with Agility and Power");
+		SelectedType choice3 = new SelectedType(50,18,3.8,6,1.2,10,"Speedy","Excel in Agility and Power but cost with Vitality");
 		this.add(choice1, 0, 1);
 		this.add(choice2, 1, 1);
 		this.add(choice3, 2, 1);

@@ -237,7 +237,7 @@ public class Player extends Entity {
 	}
 
 	private void doubleShot() {
-		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
+		long now = System.currentTimeMillis() - SceneController.getTimeAdd();	
 		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_DOUBLE),
 				Data.ATTACKSPEED_CAP)) || fire) {
 			coolDownTime[0] = now;
@@ -249,7 +249,7 @@ public class Player extends Entity {
 
 	private void trippleShot() {
 		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
-		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_DOUBLE),
+		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_TRIPPLE),
 				Data.ATTACKSPEED_CAP)) || fire) {
 			coolDownTime[0] = now;
 			multiFire(3);
@@ -258,7 +258,7 @@ public class Player extends Entity {
 
 	private void quadraShot() {
 		long now = System.currentTimeMillis() - SceneController.getTimeAdd();
-		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_DOUBLE),
+		if (now - coolDownTime[0] >= (Math.max((this.attackSpeed * Data.ATTACKSPEED_MULTIPLYER_QUADRA),
 				Data.ATTACKSPEED_CAP)) || fire) {
 			coolDownTime[0] = now;
 			multiFire(4);
