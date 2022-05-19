@@ -39,6 +39,7 @@ public class ChampionMonster extends NormalMonster {
 		Random rd = new Random();
 		this.attackSpeed = Data.BASE_AS_CM + rd.nextDouble(Data.RAND_RANGE_AS);
 		setGiveXP(Data.BASE_XP_CM + Data.XP_PER_WAVE_CM * GameLogic.getInstance().getWave());
+		this.z = 10;
 		this.modelSize = 60;
 
 	}

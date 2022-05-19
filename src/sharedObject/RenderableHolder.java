@@ -5,8 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import logic.entity.ChampionMonster;
-import logic.entity.NormalMonster;
+import logic.Projectile;
 
 public class RenderableHolder {
 	private static RenderableHolder instance = new RenderableHolder();
@@ -17,43 +16,23 @@ public class RenderableHolder {
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
 		comparator = (IRenderable o1, IRenderable o2) -> {
-			return compare(o1,o2);
+			return compare(o1, o2);
 		};
 	}
 
 	private int compare(IRenderable o1, IRenderable o2) {
-		if (o1.getZ() > o2.getZ()) {
+		if (o1.getZ() > o2.getZ()) 
 			return 1;
-		} else if (o1.getZ() == o2.getZ()) {
-			return compareY(o1, o2);
-		} else {
-			return -1;
-		}
-	}
-
-	private int compareY(IRenderable o1, IRenderable o2) {
-		if (o1.getY() > o2.getY()) {
-			return 1;
-		} else if (o1.getY() == o2.getY()) {
-			return compareByInstance(o1, o2);
-		} else {
-			return -1;
-		}
+		return -1;
 	}
 
 
-	private int compareByInstance(IRenderable o1, IRenderable o2) {
-		if (o1 instanceof ChampionMonster && o2 instanceof NormalMonster) {
-			return 1;
-		} else {
-			return -1;
-		}
-	}
-
-	
 
 	public void add(IRenderable entity) {
 		entities.add(entity);
+		if (entity instanceof Projectile) {
+			return;
+		}
 		Collections.sort(entities, comparator);
 	}
 
@@ -68,7 +47,7 @@ public class RenderableHolder {
 	public List<IRenderable> getEntities() {
 		return entities;
 	}
-	
+
 	public static RenderableHolder getInstance() {
 		return instance;
 	}
